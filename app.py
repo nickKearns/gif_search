@@ -13,7 +13,7 @@ def index():
     """Return homepage."""
     # TODO: Extract the query term from url using request.args.get()
     search_term = request.args.get('user_input')
-    print('search_term=', search_term)
+    #print('search_term=', search_term)
     # TODO: Make 'params' dictionary containing:
     # a) the query term, 'q'
     # b) your API key, 'key'
@@ -32,7 +32,7 @@ def index():
     # https://tenor.com/gifapi/documentation
 
     r = requests.get("https://api.tenor.com/v1/search?", params = params)
-   
+
 
     # TODO: Use the '.json()' function to get the JSON of the returned response
     # object
