@@ -31,18 +31,18 @@ def index():
     # TODO: Make an API call to Tenor using the 'requests' library. For 
     # reference on how to use Tenor, see: 
     # https://tenor.com/gifapi/documentation
-    '''
-    get the data from the api using the apikey, the limit and the search term that the user has supplied
-    '''
+    
+    #get the data from the api using the apikey, the limit and the search term that the user has supplied
+    
     r = requests.get("https://api.tenor.com/v1/search?", params = params)
 
 
     # TODO: Use the '.json()' function to get the JSON of the returned response
     # object
 
-    '''
-    convert that data into json data
-    '''
+    
+    #convert that data into json data
+
     gif_json = r.json()
 
     # TODO: Using dictionary notation, get the 'results' field of the JSON,
@@ -50,9 +50,9 @@ def index():
 
 
 
-    '''
-    assign the "results" portion of the json data to a variable called gifs, which should be a list of objects
-    '''
+    
+    #assign the "results" portion of the json data to a variable called gifs, which should be a list of objects
+    
     gifs = gif_json['results']
     # TODO: Render the 'index.html' template, passing the list of gifs as a
     # named parameter called 'gifs'
@@ -63,9 +63,9 @@ def index():
         search_term = search_term)
 
 
-    '''
-    Pass index.html the list of gifs and the search term that was used to get those gifs.
-    '''
+    
+    #Pass index.html the list of gifs and the search term that was used to get those gifs.
+    
 
 
 
