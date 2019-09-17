@@ -37,12 +37,15 @@ def index():
     
     #get the data from the api using the apikey, the limit and the search term that the user has supplied
     
+
     r = requests.get("https://api.tenor.com/v1/search?", params = params)
 
 
 
 
     if r.status_code == 200:
+        # TODO: Use the '.json()' function to get the JSON of the returned response
+        # object
         json_gifs = json.loads(r.content)
         gifs = json_gifs['results']
 
@@ -52,7 +55,7 @@ def index():
         return render_template(
             'index.html',
             gifs=gifs,
-            search_term = search_term
+            #search_term = search_term
         )
 
 
@@ -63,8 +66,7 @@ def index():
 
 
 
-    # TODO: Use the '.json()' function to get the JSON of the returned response
-    # object
+    
 
     
     #convert that data into json data
