@@ -1,0 +1,11 @@
+.tenor-gif-embed {
+    margin-top: 40px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

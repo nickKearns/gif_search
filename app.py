@@ -2,7 +2,7 @@ from flask import Flask, render_template, request
 import requests
 import json
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/static')
 
 
 apikey = "XFF92IL8UZZG"
@@ -55,7 +55,7 @@ def index():
         return render_template(
             'index.html',
             gifs=gifs,
-            #search_term = search_term
+            search_term = search_term
         )
 
 
