@@ -44,7 +44,7 @@ def index():
         return render_template(
             'index.html',
             gifs=gifs,
-            #search_term = search_term
+            search_term=search_term
         )
 
     # convert that data into json data
