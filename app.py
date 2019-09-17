@@ -33,6 +33,7 @@ def index():
 
 
     show_trending = request.args.get('show_trending')
+    show_random = request.args.get('show_random')
 
     if show_trending:
         r = requests.get("https://api.tenor.com/v1/trending?key=XFF92IL8UZZG")
@@ -44,6 +45,17 @@ def index():
             gifs = gifs
         )
 
+
+
+
+    elif show_random:
+        r = requests.get("https://api.tenor.com/v1/random?", params = params)
+        json_gifs = json.loads(r.content)
+        gifs = json_gifs['results']
+        return render_template(
+            'index.html',
+            gifs = gifs
+        )
 
 
 
