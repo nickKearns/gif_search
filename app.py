@@ -30,8 +30,6 @@ def index():
     # reference on how to use Tenor, see:
     # https://tenor.com/gifapi/documentation
 
-
-
     show_trending = request.args.get('show_trending')
     show_random = request.args.get('show_random')
 
@@ -47,34 +45,27 @@ def index():
         gifs = json_gifs['results']
         return render_template(
             'index.html',
-            gifs = gifs
+            gifs=gifs
         )
 
-
-
-
-    #this if statement checks if the show random button has been pressed
-    #if it has then it will make a call to the random portion of the tenor api
-    #then pass that json data to index to display the random gifs
-
+    # this if statement checks if the show random button has been pressed
+    # if it has then it will make a call to the random portion of the tenor api
+    # then pass that json data to index to display the random gifs
 
     elif show_random:
-        r = requests.get("https://api.tenor.com/v1/random?", params = params)
+        r = requests.get("https://api.tenor.com/v1/random?", params=params)
         json_gifs = json.loads(r.content)
         gifs = json_gifs['results']
         return render_template(
             'index.html',
-            gifs = gifs
+            gifs=gifs
         )
 
-
-
-    #this portion of the function will place the given search term into the api request 
-    #and hand the json data associated with the search term to index to display
+    # this portion of the function will place the given search term into the api request
+    # and hand the json data associated with the search term to index to display
     elif search_term:
 
         r = requests.get("https://api.tenor.com/v1/search?", params=params)
-
 
         if r.status_code == 200:
             # TODO: Use the '.json()' function to get the JSON of the returned response
@@ -93,10 +84,15 @@ def index():
             return render_template(
                 'index.html',
                 gifs=gifs,
-                search_term = search_term
+                search_term=search_term
             )
 
-    #this else statement will run anytime the page is freshly loaded
+        else:
+            return render_template(
+                'error.html'
+            )
+
+    # this else statement will run anytime the page is freshly loaded
     # it will load gifs based on an empty search term, which the api will use to display some gifs anyway
     else:
         r = requests.get("https://api.tenor.com/v1/search?", params=params)
@@ -106,7 +102,6 @@ def index():
             'index.html',
             gifs=gifs
         )
-    
 
 
 if __name__ == '__main__':
