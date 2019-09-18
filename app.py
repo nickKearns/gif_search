@@ -35,10 +35,10 @@ def index():
     show_trending = request.args.get('show_trending')
     show_random = request.args.get('show_random')
 
-    '''
-    this if statement checks to see if the show trending button has been pressed, if it has been pressed then it will take the trending reequest
-    from the api and hand it to index to display those gifs
-    '''
+    
+    #this if statement checks to see if the show trending button has been pressed, if it has been pressed then it will take the trending reequest
+    #from the api and hand it to index to display those gifs
+    
 
     if show_trending:
         r = requests.get("https://api.tenor.com/v1/trending?key=XFF92IL8UZZG")
@@ -94,6 +94,10 @@ def index():
                 'index.html',
                 gifs=gifs,
                 search_term = search_term
+            )
+        elif r.status_code != 200:
+            return render_template('index.html',
+            error = "Could not find any gifs"
             )
 
     #this else statement will run anytime the page is freshly loaded
