@@ -24,7 +24,7 @@ def index():
     # a) the query term, 'q'
     # b) your API key, 'key'
     # c) how many GIFs to return, 'limit'
-    params = {
+    params = {  
         'q': search_term,
         'key': apikey,
         'limit': limit
@@ -115,4 +115,4 @@ def index():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True, host='0.0.0.0', port=os.environ.get('PORT', 5000))
