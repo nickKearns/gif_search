@@ -10,49 +10,36 @@
     the search term to the query string. The form should have a target of '/' to
     send us to the same route. -->
 <form action='/'>
-    <p>
-        Search
-        <input type='text' name='user_input' value="{{search_term}}" />
-    </p>
-    <p>
-        <input type="submit" value="Show gifs" />
-    </p>
+    <div class="search">
+        <p>
 
-    <p>
-        <input type="submit" name='show_trending' value="trending" />
-    </p>
-    <p>
-        <input type='submit' name='show_random' value="random" />
-    </p>
+            <input class="text-field" type='text' name='user_input' value="{{search_term}}"
+                placeholder="Search for GIFs" />
+        </p>
+        <p>
+            <input class="search-gifs" type="submit" value="Search GIFs" />
+        </p>
+    </div>
+    <div class="non-search-buttons">
+        <p>
+            <input type="submit" name='show_trending' value="Trending" />
+        </p>
+        <p>
+            <input type='submit' name='show_random' value="Random" />
+        </p>
+    </div>
 </form>
-
-<style>
-    html {
-        background-color: aqua;
-        /* background: url('https://i.pinimg.com/originals/2d/31/73/2d3173776fda5a53f4a67179df89a971.jpg') */
-    }
-
-    p {
-        font-size: 30px;
-    }
-
-    input {
-        height: 50px;
-        font-size: 30px;
-        color: magenta;
-        background-color: orange;
-        padding: 10px;
-    }
-</style>
 
 
 
 <!-- TODO: Make a for loop to loop over GIFs passed in from the server -->
-{% for gif in gifs%}
-{%include 'gif.html'%}
-{%endfor%}
-<!-- TODO: For each gif, include the 'gif.html' template to display it -->
+<div class="gifs">
 
 
+    {% for gif in gifs%}
+    {%include 'gif.html'%}
+    {%endfor%}
+    <!-- TODO: For each gif, include the 'gif.html' template to display it -->
+    {%endblock%}
 
-{%endblock%}
+</div>

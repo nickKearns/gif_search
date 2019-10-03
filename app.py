@@ -1,11 +1,15 @@
 from flask import Flask, render_template, request
 import requests
 import json
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
 app = Flask(__name__, static_url_path='/static')
 
+apikey = os.getenv("TENOR_API_KEY")
 
-apikey = "XFF92IL8UZZG"
+
 limit = 10
 
 
